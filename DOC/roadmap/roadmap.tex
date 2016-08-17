@@ -1,0 +1,112 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
+\usepackage{amssymb}
+\begin{document}
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=2cm, text centered, rounded corners, minimum height=0.5cm]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+\tikzstyle{connection}=[inner sep=0,outer sep=0]
+
+\begin{tikzpicture}%[node distance = 1cm, auto]
+
+  % Place nodes
+  %\tiny
+
+
+  \node [connection](A0){};
+  \node [connection,below=1.5cm and 0.0cm of A0](A1){};
+  \node [connection,below=1.5cm and 0.0cm of A1](A2){};
+  \node [connection,below=1.5cm and 0.0cm of A2](A3){};
+  \node [connection,below=1.5cm and 0.0cm of A3](A4){};
+  \node [connection,below=1.5cm and 0.0cm of A4](A5){};
+  \node [block,fill=red!50    ,text width=2cm,right=0.0cm and 0.5cm of A0] (PDF) {PDF};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of A1] (DIS) {DIS};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of A2] (DY) {DY};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of A3] (JETS) {JETS};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of A4] (WASY) {W$_{\rm ASY}$};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of A5] (INCA) {$pp\rightarrow\gamma X$};
+
+  \draw [red, dashed, very thick]  (A0) -- (A5);
+  \draw [red, dashed, very thick]  (A0) -- (PDF);
+  \draw [red, dashed, very thick]  (A1) -- (DIS);
+  \draw [red, dashed, very thick]  (A2) -- (DY);
+  \draw [red, dashed, very thick]  (A3) -- (JETS);
+  \draw [red, dashed, very thick]  (A4) -- (WASY);
+  \draw [red, dashed, very thick]  (A5) -- (INCA);
+
+
+  \node [connection,right=0.0cm and 5.0cm of A0](B0){};
+  \node [connection,below=1.5cm and 0.0cm of B0](B1){};
+  \node [connection,below=1.5cm and 0.0cm of B1](B2){};
+  \node [connection,below=1.5cm and 0.0cm of B2](B3){};
+  \node [connection,below=1.5cm and 0.0cm of B3](B4){};
+  \node [connection,below=1.5cm and 0.0cm of B4](B5){};
+  \node [block,fill=red!50    ,text width=2cm,right=0.0cm and 0.5cm of B0] (PPDF) {$\Delta$PDF};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of B1] (PDIS) {$\Delta$DIS};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of B2] (PSIDIS) {$\Delta$SIDIS};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of B3] (PJETS) {$\Delta$JETS};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of B4] (PINCPI) {$\vec{p}p\rightarrow\pi X$};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of B5] (PWASY) {$\Delta$W$_{\rm ASY}$};
+
+  \draw [red, dashed, very thick]  (B0) -- (B5);
+  \draw [red, dashed, very thick]  (B0) -- (PPDF);
+  \draw [red, dashed, very thick]  (B1) -- (PDIS);
+  \draw [red, dashed, very thick]  (B2) -- (PSIDIS);
+  \draw [red, dashed, very thick]  (B3) -- (PJETS);
+  \draw [red, dashed, very thick]  (B4) -- (PINCPI);
+  \draw [red, dashed, very thick]  (B5) -- (PWASY);
+
+  \node [connection,right=0.0cm and 5.0cm of B0](C0){};
+  \node [connection,below=1.5cm and 0.0cm of C0](C1){};
+  \node [connection,below=1.5cm and 0.0cm of C1](C2){};
+  \node [connection,below=1.5cm and 0.0cm of C2](C3){};
+  \node [block,fill=red!50    ,text width=2cm,right=0.0cm and 0.5cm of C0] (FF) {FF};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of C1] (SIA) {SIA};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of C2] (SIDIS) {SIDIS};
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of C3] (INCPI) {$pp\rightarrow\pi X$};
+
+
+  \draw [red, dashed, very thick]  (C0) -- (C3);
+  \draw [red, dashed, very thick]  (C0) -- (FF);
+  \draw [red, dashed, very thick]  (C1) -- (SIA);
+  \draw [red, dashed, very thick]  (C2) -- (SIDIS);
+  \draw [red, dashed, very thick]  (C3) -- (INCPI);
+
+  \node [connection,above=1.0cm and 0cm of PPDF](D0){};
+  \node [block,fill=red!50    ,text width=2cm,above=1.0cm and 0.0cm of D0] (alphaS) {$\alpha_S$};
+  \draw [red, dashed, very thick]  (PPDF) -- (alphaS);
+  \draw [red, dashed, very thick]  (PDF) -- (D0);
+  \draw [red, dashed, very thick]  (FF) -- (D0);
+
+  % connections
+
+  \draw [blue, very thick]  (PDF) -- (B1);
+  \draw [blue, very thick]  (PDF) -- (B2);
+  \draw [blue, very thick]  (PDF) -- (B3);
+  \draw [blue, very thick]  (PDF) -- (B4);
+  \draw [blue, very thick]  (PDF) -- (B5);
+
+  \draw [blue, very thick]  (FF) -- (B2);
+  \draw [blue, very thick]  (FF) -- (B4);
+
+  \draw [blue, very thick]  (PDF) -- (C2);
+  \draw [blue, very thick]  (PDF) -- (C3);
+
+  % replot
+  \node [block,fill=white!50  ,text width=2cm,right=0.0cm and 0.5cm of A1] (DIS) {DIS};
+  \node [block,fill=yellow!50  ,text width=2cm,right=0.0cm and 0.5cm of B1] (PDIS) {$\Delta$DIS \checkmark};
+  \node [block,fill=yellow!50  ,text width=2cm,right=0.0cm and 0.5cm of B3] (PJETS) {$\Delta$JETS };
+  \node [block,fill=yellow!50  ,text width=2cm,right=0.0cm and 0.5cm of B2] (PSIDIS) {$\Delta$SIDIS};
+  \node [block,fill=yellow!50  ,text width=2cm,right=0.0cm and 0.5cm of C1] (SIA) {SIA \checkmark};
+
+\end{tikzpicture}
+\end{document}
+
+
+
+
+
+
+

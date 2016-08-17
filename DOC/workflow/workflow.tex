@@ -1,0 +1,66 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
+\begin{document}
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=2cm, text centered, rounded corners, minimum height=0.5cm]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+\tikzstyle{connection}=[inner sep=0,outer sep=0]
+
+\begin{tikzpicture}
+
+  \node [block,fill=white!50    ,text width=1.2cm] (sampler) {sampler};
+  \node [block,fill=blue!20  ,text width=1cm,right       = 0.0cm and 0.5cm of sampler]  (pri)  {priors};
+  \node [cloud,fill=yellow!20  ,above right = 0.2cm and 0.5cm of pri]  (fit1) {fit};
+  \node [cloud,fill=yellow!20  ,right       = 0.0cm and 0.5cm of pri]  (fit2) {fit};
+  \node [cloud,fill=yellow!20  ,below right = 0.2cm and 0.5cm of pri]  (fit3) {fit};
+  \node [block,fill=red!20  ,text width=1.5cm,right       = 0.0cm and 0.5cm of fit2] (pos)  {posteriors};
+  \node [connection,below=1cm and 0.0cm of pos](c1){};
+  \node [connection,below=1cm and 0.0cm of sampler](c2){};
+  \draw [red, dashed,->, very thick]  (sampler) -- (pri);
+  \draw [red, dashed,->, very thick]  (pri) -- (fit1);
+  \draw [red, dashed,->, very thick]  (pri) -- (fit2);
+  \draw [red, dashed,->, very thick]  (pri) -- (fit3);
+  \draw [red, dashed,->, very thick]  (fit1) -- (pos);
+  \draw [red, dashed,->, very thick]  (fit2) -- (pos);
+  \draw [red, dashed,->, very thick]  (fit3) -- (pos);
+  \draw [red, dashed, very thick]  (pos) -- (c1);
+  \draw [red, dashed,->, very thick]  (c2) -- (sampler);
+  \draw [red, dashed, very thick]  (c1) -- (c2);
+
+
+  \node [block,fill=white!50  ,text width=2cm,below        = 1.2cm and 0.0cm of fit3] (data)  {original data};
+  \node [block,fill=white!50  ,text width=1cm,below        = 0.5cm and 0.0cm of data] (pdata) {pseudo data};
+  \node [block,fill=white!50  ,text width=1.3cm,below left   = 0.3cm and 0.0cm of pdata] (T) {training data};
+  \node [cloud,fill=yellow!20  ,below        = 0.3cm and 0.0cm of T] (fitn) {fit};
+  \node [block,fill=white!50  ,text width=3cm,below        = 0.3cm and 0.0cm of fitn] (p) {parameters from minimization steps};
+  
+  \node [block,fill=white!50  ,text width=1.5cm,below right  = 0.3cm and 0.0cm of pdata] (V) {validation data};
+  \node [decision,fill=white!50  ,text width=1.55cm,below       = 0.7cm and 0.0cm of V] (val) {validation};
+  \node [cloud,fill=red!20  ,below        = 0.3cm and 0.0cm of val] (posn) {posterior};
+
+  \draw [blue, dashed,->, very thick]  (data) -- (pdata);
+  \draw [blue, dashed,->, very thick]  (pdata) -- (T);
+  \draw [blue, dashed,->, very thick]  (T) -- (fitn);
+  \draw [blue, dashed,->, very thick]  (fitn) -- (p);
+  \draw [blue, dashed,->, very thick]  (pdata) -- (V);
+  \draw [blue, dashed,->, very thick]  (V) -- (val);
+  \draw [blue, dashed,->, very thick]  (val) -- (posn);
+  \draw [blue, dashed,->, very thick]  (p) -- (val);
+
+
+  \node [block,fill=white!50  ,text width=1.4cm,left =0.0cm and 1.0cm of fitn](guess){as initial guess};
+  \node [cloud,fill=blue!20  ,above        = 1.5cm and 0.0cm of guess] (prior) {prior};
+  \draw [blue, dashed,->, very thick]  (guess) -- (fitn);
+  \draw [blue, dashed,->, very thick]  (prior) -- (guess);
+
+\end{tikzpicture}
+\end{document}
+
+
+
+
+
+
+
