@@ -1,4 +1,4 @@
-![optional caption text](DOC/jam.jpg)
+![jamlogo](gallery/jam.jpg)
 
 ## About
  
