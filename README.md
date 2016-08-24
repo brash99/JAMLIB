@@ -28,6 +28,13 @@ observables with checkmarks has been included in the JAM analysis.
 
 ## Iterative Monte Carlo method 
 
+<img src="gallery/workflow.jpg" width="600">
+
+## Theoretical 
+
+
+
+
 ## Authors:
 * Nobuo Sato  (nsato@jlab.org)
 * Jake Ethier 
