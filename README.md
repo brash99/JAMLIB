@@ -31,6 +31,7 @@ Tha main gloal of the JAM analysis is to perform a universal fit to extract
 collinear (un)polarized parton densities as well as parton to hadron
 fragmentation functions from all existing available data. At present the
 observables with checkmarks has been included in the JAM analysis.
+
 <img src="gallery/roadmap.jpg" width="500">
 
 
