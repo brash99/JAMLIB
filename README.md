@@ -15,6 +15,8 @@ The codes can be downloaded in two ways
 
 To get the latest update, just pull from your local repo, e.g. `$ git pull`.
 
+## Documentation
+JAMLIB documentation is available in the [wiki](https://github.com/JeffersonLab/JAMLIB/wiki). 
 
 ## Authors:
 - Nobuo Sato  nsato@jlab.org
