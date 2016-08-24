@@ -24,11 +24,11 @@ collinear (un)polarized parton densities as well as parton to hadron
 fragmentation functions from all existing available data. At present the
 observables with checkmarks has been included in the JAM analysis.
 
-<img src="gallery/roadmap.jpg" width="600">
+<img src="gallery/roadmap.jpg" width="500">
 
 ## Iterative Monte Carlo method 
 
-<img src="gallery/workflow.jpg" width="600">
+<img src="gallery/workflow.jpg" width="500">
 
 ## Theoretical 
 
