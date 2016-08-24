@@ -2,10 +2,14 @@
 
 ## About
  
-The repository contains a collection codes/scripts (in fortran, python,
+The repository contains a collection of codes/scripts (in fortran, python,
 mathematica) along with interpolation tables for the collinear parton 
 distributions in the nucleon as well as the collinear parton to hadron 
-fragmentation functions.
+fragmentation functions. In addition we include: 
+
+* polarized twist 3 up and down distributions.
+* polarized structure functions g1 and g2 for proton, neutron, deuterium and helium.
+
 
 ## Quick start
 The codes can be downloaded in two ways
@@ -26,11 +30,16 @@ observables with checkmarks has been included in the JAM analysis.
 
 <img src="gallery/roadmap.jpg" width="500">
 
+## Theory
+* The extraction is performed using collinear factorization at NLO in perturbative QCD
+* For DIS data 
+
+
+
 ## Iterative Monte Carlo method 
 
 <img src="gallery/workflow.jpg" width="500">
 
-## Theoretical 
 
 
 
