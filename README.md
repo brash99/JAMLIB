@@ -11,13 +11,9 @@ fragmentation functions.
 The codes can be downloaded in two ways
 
 * [Download the latest release](https://github.com/JeffersonLab/JAMLIB/archive/master.zip).
-*  Clone the repo:  `git https://github.com/JeffersonLab/JAMLIB.git`.
+*  Clone the repo:  `$ git https://github.com/JeffersonLab/JAMLIB.git`.
 
-
-
-## Software
-
-
+To get the latest update, just pull from your local repo, e.g. `$ git pull`.
 
 
 ## Authors:
