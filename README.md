@@ -20,8 +20,7 @@ JAMLIB documentation is available in the [wiki](https://github.com/JeffersonLab/
 
 ## Roadmap
 
-![roadmap](gallery/roadmap.jpg)
-
+<img src="gallery/roadmap.jpg" width="48">
 
 
 ## Authors:
