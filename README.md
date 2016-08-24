@@ -2,7 +2,7 @@
 
 ## About
  
-The repository contains a collection codes/scripts (fortran, python,
+The repository contains a collection codes/scripts (in fortran, python,
 mathematica) along with interpolation tables for the collinear parton 
 distributions in the nucleon as well as the collinear parton to hadron 
 fragmentation functions.
@@ -10,7 +10,6 @@ fragmentation functions.
 ## 
 
 
-## load
 
 ## Software
 
