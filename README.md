@@ -19,12 +19,14 @@ To get the latest update, just pull from your local repo, e.g. `$ git pull`.
 JAMLIB documentation is available in the [wiki](https://github.com/JeffersonLab/JAMLIB/wiki). 
 
 ## Roadmap
-Tha main gloal of the JAM analysis is to perform a simultaneus QCD universal analysis to extract
-PDFs, PPDs and FFs from all existing available data. At present the observables with checkmarks 
-has been included in the JAM analysis.
+Tha main gloal of the JAM analysis is to perform a universal fit to extract
+collinear (un)polarized parton densities as well as parton to hadron
+fragmentation functions from all existing available data. At present the
+observables with checkmarks has been included in the JAM analysis.
 
 <img src="gallery/roadmap.jpg" width="600">
 
+## Iterative Monte Carlo method 
 
 ## Authors:
 * Nobuo Sato  (nsato@jlab.org)
