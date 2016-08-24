@@ -18,10 +18,16 @@ To get the latest update, just pull from your local repo, e.g. `$ git pull`.
 ## Documentation
 JAMLIB documentation is available in the [wiki](https://github.com/JeffersonLab/JAMLIB/wiki). 
 
+## Roadmap
+
+![roadmap](gallery/roadmap.jpg)
+
+
+
 ## Authors:
-- Nobuo Sato  nsato@jlab.org
-- Jake Ethier 
-- Wally Melnitchouk  
-- Alberto Accardi
+* Nobuo Sato  (nsato@jlab.org)
+* Jake Ethier 
+* Wally Melnitchouk  
+* Alberto Accardi
 
 
