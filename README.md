@@ -22,23 +22,24 @@ To get the latest update, just pull from your local repo, e.g. `$ git pull`.
 ## Documentation
 JAMLIB documentation is available in the [wiki](https://github.com/JeffersonLab/JAMLIB/wiki). 
 
+## Theory
+* The JAM analysis uses collinear factorization at NLO in perturbative QCD.
+* For DIS data we include a treatment of higher twist as well as target mass corrections.
+
 ## Roadmap
 Tha main gloal of the JAM analysis is to perform a universal fit to extract
 collinear (un)polarized parton densities as well as parton to hadron
 fragmentation functions from all existing available data. At present the
 observables with checkmarks has been included in the JAM analysis.
-
 <img src="gallery/roadmap.jpg" width="500">
-
-## Theory
-* The extraction is performed using collinear factorization at NLO in perturbative QCD
-* For DIS data 
-
 
 
 ## Iterative Monte Carlo method 
+The JAM analysis uses a novel fitting procedure based on Monte Carlo techniques
+to have robust estimates of expectation values and variances of the extracted 
+distributions.  
 
-<img src="gallery/workflow.jpg" width="500">
+<img src="gallery/workflow.jpg" width="400">
 
 
 
