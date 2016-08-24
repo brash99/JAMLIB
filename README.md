@@ -1,10 +1,20 @@
 ![optional caption text](DOC/jam.jpg)
 
-## About 
-The JAM (Jefferson Lab Angular Momentum) Collaboration is an enterprise
-involving theorists and experimentalists from the Jefferson Lab community to
-study the quark and gluon spin structure of the nucleon by performing global
-fits of spin-dependent parton distribution functions (PDFs). 
+## About
+ 
+The repository contains a collection codes/scripts (fortran, python,
+mathematica) along with interpolation tables for the collinear parton 
+distributions in the nucleon as well as the collinear parton to hadron 
+fragmentation functions.
+
+## 
+
+
+## load
+
+## Software
+
+
 
 
 ## Authors:
