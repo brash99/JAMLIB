@@ -87,6 +87,7 @@ class JAMLIB(object):
   # interpolation for xF
 
   def load_tables(self,path):
+    SPL=[]
     TAB=[]
     F=os.listdir(path)
     self.npos=len(F)
@@ -95,18 +96,27 @@ class JAMLIB(object):
       tab=load('%s/%s'%(path,f)) 
       X=tab['X']
       Q2=tab['Q2']
+      self.X=X
+      self.Q2=Q2
+      spl={}
       for k in tab:
         if k=='X' or k=='Q2': continue
+        spl[k]={}
         for kk in tab[k]:
-          tab[k][kk]=RectBivariateSpline(X,Q2,tab[k][kk])
+          spl[k][kk]=RectBivariateSpline(X,Q2,tab[k][kk])
+          tab[k][kk]=np.transpose(tab[k][kk])
+      SPL.append(spl)
       TAB.append(tab)
       bar.next()
     bar.finish()
-    self.TAB=TAB 
+    self.SPL=SPL
+    self.TAB=TAB
 
   def get_XF(self,ipos,dist,flav,x,Q2):
-    return self.TAB[ipos][dist][flav](x,Q2)[0,0]
+    return self.SPL[ipos][dist][flav](x,Q2)[0,0]
 
+  def get_XF_TAB(self,ipos,dist,flav,iQ2):
+    return self.X,self.TAB[ipos][dist][flav][iQ2,:]
 
 
 

@@ -4,7 +4,7 @@ import numpy as np
 import pylab as py
 from corelib import JAMLIB
 
-jamlib=JAMLIB('FFpions')
+jamlib=JAMLIB('JAM16/FFpions')
 
 x,Q2=0.5,10.0
 
