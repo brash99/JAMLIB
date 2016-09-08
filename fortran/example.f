@@ -1,5 +1,5 @@
 ***************************************************************************                                                                                   
-      PROGRAM JAM16FF
+      PROGRAM EXAMPLE
       IMPLICIT NONE
       INTEGER ipos
       CHARACTER(len=20)::flav,hadron
