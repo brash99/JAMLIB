@@ -7,6 +7,8 @@ mathematica), along with interpolation tables for the collinear parton
 distributions in the nucleon, as well as the collinear parton to hadron
 fragmentation functions. 
 
+NOTE: Only python version is available.
+
 ## Quick start
 The codes can be downloaded in two ways
 
