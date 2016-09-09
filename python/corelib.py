@@ -112,12 +112,20 @@ class JAMLIB(object):
     bar.finish()
     self.SPL=SPL
     self.TAB=TAB
-
+    self.Xgrid = X
+    self.Q2grid = Q2
+  
   def get_XF(self,ipos,flav,x,Q2):
     return self.SPL[ipos][self.dist][flav](x,Q2)[0,0]
 
   def get_XF_TAB(self,ipos,flav,iQ2):
     return self.X,self.TAB[ipos][self.dist][flav][iQ2,:]
+
+  def get_Xgrid(self):
+    return self.Xgrid
+    
+  def get_Q2grid(self):
+    return self.Q2grid
 
 
 
