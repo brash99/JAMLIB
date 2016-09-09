@@ -1,4 +1,4 @@
-![jamlogo](gallery/jam.jpg)
+![jamlogo](../gallery/jam.jpg)
 
 # python interface
 
