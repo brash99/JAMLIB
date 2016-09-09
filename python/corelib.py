@@ -10,6 +10,7 @@ class JAMLIB(object):
     logo()
     self.setup_alphaS(order='NLO')
     self.load_tables(path)
+    self.dist=path.split('/')[1]
 
   # alphaS
 
@@ -112,11 +113,11 @@ class JAMLIB(object):
     self.SPL=SPL
     self.TAB=TAB
 
-  def get_XF(self,ipos,dist,flav,x,Q2):
-    return self.SPL[ipos][dist][flav](x,Q2)[0,0]
+  def get_XF(self,ipos,flav,x,Q2):
+    return self.SPL[ipos][self.dist][flav](x,Q2)[0,0]
 
-  def get_XF_TAB(self,ipos,dist,flav,iQ2):
-    return self.X,self.TAB[ipos][dist][flav][iQ2,:]
+  def get_XF_TAB(self,ipos,flav,iQ2):
+    return self.X,self.TAB[ipos][self.dist][flav][iQ2,:]
 
 
 

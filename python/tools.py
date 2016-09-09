@@ -39,27 +39,26 @@ class BAR(object):
     self.cnt+=1
 
   def finish(self):
+    self.next()
     print 
 
 def logo():
   L=[]
-  L.append('################################################ ')
-  L.append('                                                 ')
-  L.append('     _   _    __  __ _     ___ ____              ')
-  L.append('    | | / \  |  \/  | |   |_ _| __ )             ')
-  L.append(' _  | |/ _ \ | |\/| | |    | ||  _ \             ')
-  L.append('| |_| / ___ \| |  | | |___ | || |_) |            ')
-  L.append(' \___/_/   \_\_|  |_|_____|___|____/             ')
-  L.append('                                                 ')
-  L.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ')
-  L.append('                                                 ')
-  L.append('Authors:                                         ')
-  L.append('Nobuo Sato   nsato@jlab.org                      ')
-  L.append('Jake Ethier                                      ')
-  L.append('Wally Melnitchouk                                ')
-  L.append('Alberto Accardi                                  ')
-  L.append('################################################ ')
+  L.append('########################################################## ')
+  L.append('                                                           ')
+  L.append('     _   _    __  __ _     ___ ____                        ')
+  L.append('    | | / \  |  \/  | |   |_ _| __ )                       ')
+  L.append(' _  | |/ _ \ | |\/| | |    | ||  _ \                       ')
+  L.append('| |_| / ___ \| |  | | |___ | || |_) |                      ')
+  L.append(' \___/_/   \_\_|  |_|_____|___|____/                       ')
+  L.append('                                                           ')
+  L.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ')
+  L.append('                                                           ')
+  L.append('Authors:                                                   ')
+  L.append('Nobuo Sato         (Jefferson Lab)                         ')
+  L.append('Jake Ethier        (College of William and Mary)           ')
+  L.append('Wally Melnitchouk  (Jefferson Lab)                         ')
+  L.append('Alberto Accardi    (Hampton University and Jefferson Lab)  ')
+  L.append('########################################################## ')
   for l in L: print l
 
-
-  
