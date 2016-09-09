@@ -10,7 +10,7 @@ class JAMLIB(object):
     logo()
     self.setup_alphaS(order='NLO')
     self.load_tables(path)
-    self.dist=path.split('/')[1]
+    self.dist=path.split('/')[-1]
 
   # alphaS
 
