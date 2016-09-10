@@ -7,7 +7,7 @@ mathematica), along with interpolation tables for the collinear parton
 distributions in the nucleon, as well as the collinear parton to hadron
 fragmentation functions. 
 
-NOTE: Only python version is available. LHAPDF and fortran lib is comming soon!
+NOTE: Only python version is available. LHAPDF and fortran code will be available soon!
 
 ## Quick start
 The codes can be downloaded in two ways
