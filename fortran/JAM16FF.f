@@ -69,14 +69,14 @@ c      END PROGRAM
 
       DO 2 J=1,nq2
       SA=DLOG(DLOG(QA(J)/lam)/DLOG(Qini/lam))
-      if(S.lt.SA)then
+      IF(S.LT.SA)THEN
          J2=J
-         if(J2.eq.1)J2=2
+         IF(J2.EQ.1)J2=2
          J1=J2-1
          S2=DLOG(DLOG(QA(J2)/lam)/DLOG(Qini/lam))
          S1=DLOG(DLOG(QA(J1)/lam)/DLOG(Qini/lam))
          GOTO 1
-      endif
+      ENDIF
  2    CONTINUE
  1    CONTINUE
 
@@ -120,18 +120,18 @@ c      END PROGRAM
       IF(z.LT.ZA(I))GOTO 2
  1    CONTINUE
  2    I=I-2
-      If(I.le.0.d0) I=1
-      If(I.gt.(nz-3))I=nz-3
+      If(I.LE.0.d0)I=1
+      If(I.GT.(nz-3))I=nz-3
       zz(1)=ZA(I)
       zz(2)=ZA(I+1)
       zz(3)=ZA(I+2)
       zz(4)=ZA(I+3)
-      fz(1)=DQP(I,J)
-      fz(2)=DQP(I+1,J)
-      fz(3)=DQP(I+2,J)
-      fz(4)=DQP(I+3,J)
+      fz(1)=DQP(I,J)*z
+      fz(2)=DQP(I+1,J)*z
+      fz(3)=DQP(I+2,J)*z
+      fz(4)=DQP(I+3,J)*z
       call POLINT4(zz,fz,z,ans)
-      get_fz=ans
+      get_fz=ans/z
 
       RETURN
       END
