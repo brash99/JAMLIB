@@ -6,7 +6,7 @@ c      INTEGER ipos,iz
 c      CHARACTER(len=20)::flav,hadron
 c      REAL*8 z,Q2,dp,get_zF,TEST
 
-c      ipos=1
+c      ipos=200
 c      flav='dp'
 c      hadron='pion'
 c      !z=0.5D0
@@ -17,7 +17,7 @@ c      CALL GRID_INIT(hadron,ipos)
 c      DO iz=5,100
 c         z = FLOAT(iz)/100.D0
 c         dp = get_zF(flav,z,Q2)
-c         print *,z,Q2,dp
+!         print *,z,Q2,dp
 c      ENDDO
 
 c      END PROGRAM
@@ -154,18 +154,20 @@ c      END PROGRAM
 
 
       if (hadron.eq.'pion') then
-         folder='FFpion'
+         folder='JAM16FF_pi'
       elseif (hadron.eq.'kaon') then
-         folder='FFkaon'
+         folder='JAM16FF_K'
       endif
 
       if (ipos < 10) then
-         WRITE(filename,'(A3,I1)') 'zF-',ipos
+         WRITE(filename,'(A14,I1)') trim(folder)//'_000',ipos
       elseif (ipos>10.and.ipos<100) then
-         WRITE(filename,'(A3,I2)') 'zF-',ipos
+         WRITE(filename,'(A13,I2)') trim(folder)//'_00',ipos
       elseif (ipos>100) then
-         WRITE(filename,'(A3,I3)') 'zF-',ipos
+         WRITE(filename,'(A12,I3)') trim(folder)//'_0',ipos
       endif
+
+      print *,filename
 
       OPEN(10,FILE=trim(folder)//'/'//trim(filename)//'.dat',
      &                                            STATUS='old')
