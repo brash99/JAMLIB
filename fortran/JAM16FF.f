@@ -6,7 +6,7 @@ c      INTEGER ipos,iz
 c      CHARACTER(len=20)::flav,hadron
 c      REAL*8 z,Q2,dp,get_zF,TEST
 
-c      ipos=0
+c      ipos=1
 c      flav='dp'
 c      hadron='pion'
 c      !z=0.5D0
@@ -43,7 +43,7 @@ c      END PROGRAM
 *
 ***************************************************************************
 
-      FUNCTION get_zF(flav,z,Q)
+      FUNCTION get_zF(flav,z,Q2)
       IMPLICIT NONE
       INTEGER nq2,nz,ipos,INIT
       PARAMETER (nq2=30,nz=100)
@@ -51,7 +51,7 @@ c      END PROGRAM
       REAL*8 ZA(nz),QA(nq2),up(nz,nq2),dp(nz,nq2),sp(nz,nq2),cp(nz,nq2)
       REAL*8 bp(nz,nq2),gl(nz,nq2)
       REAL*8 z,Q2,zF,error,RINTERP2D,A1,A2,S1,S2,logQ,ANS,get_zF,get_fz
-      REAL*8 s,SA,lam,Qini,Q
+      REAL*8 S,SA,lam,Qini,Q,DQP(nz,nq2),Q2A(nq2)
       CHARACTER(len=20)::flav
       COMMON/FF_INIT/INIT
       COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
@@ -63,46 +63,28 @@ c      END PROGRAM
       ENDIF
 
       Qini=1.D0
-      !q = DSQRT(Q2)
+      q = DSQRT(Q2)
       lam=0.2268D0
-      s = DLOG(DLOG(q/lam)/DLOG(Qini/lam))
+      S = DLOG(DLOG(q/lam)/DLOG(Qini/lam))
 
       DO 2 J=1,nq2
       SA=DLOG(DLOG(QA(J)/lam)/DLOG(Qini/lam))
-      !SA=DSQRT(Q2A(J))
-      if(s.lt.SA)then
+      if(S.lt.SA)then
          J2=J
          if(J2.eq.1)J2=2
          J1=J2-1
          S2=DLOG(DLOG(QA(J2)/lam)/DLOG(Qini/lam))
          S1=DLOG(DLOG(QA(J1)/lam)/DLOG(Qini/lam))
-         !S2=DSQRT(Q2A(J2))
-         !S1=DSQRT(Q2A(J1))
          GOTO 1
       endif
  2    CONTINUE
  1    CONTINUE
 
-c      logQ = DLOG(Q)
-c      DO 2 J=1,nq2
-c      if(logQ.lt.DLOG(Q2A(J)))then
-c         J2=J
-c         if(J2.eq.1)J2=2
-c         J1=J2-1
-c         S2=DLOG(Q2A(J2))
-c         S1=DLOG(Q2A(J1))
-         !S2=DLOG(DLOG(Q2A(J2)/lam)/DLOG(Qini/lam))
-         !S1=DLOG(DLOG(Q2A(J1)/lam)/DLOG(Qini/lam))
-c         GOTO 1
-c      endif
-c 2    CONTINUE
-c 1    CONTINUE
-
       A1=get_fz(flav,z,J1)
       A2=get_fz(flav,z,J2)
-      ANS=A1*(s-S2)/(S1-S2)+A2*(s-S1)/(S2-S1)
-      !if(ans.lt.0.d0)ans=0.d0
-      zF=ANS
+      ANS=A1*(S-S2)/(S1-S2)+A2*(S-S1)/(S2-S1)
+
+      get_zF=ANS
       RETURN
       END
 
@@ -114,7 +96,7 @@ c 1    CONTINUE
       PARAMETER (nz = 100, nq2 = 30)
       REAL*8 zz(4),fz(4),up(nz,nq2),dp(nz,nq2),cp(nz,nq2),sp(nz,nq2)
       REAL*8 bp(nz,nq2),gl(nz,nq2),ZA(nz),QA(nq2),DQP(nz,nq2)
-      REAL*8 get_fz,z,ans
+      REAL*8 get_fz,z,ans,error
       CHARACTER(len=20)::flav
       COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
       COMMON/Z_Q2_GRIDS/ZA,QA
@@ -138,7 +120,7 @@ c 1    CONTINUE
       IF(z.LT.ZA(I))GOTO 2
  1    CONTINUE
  2    I=I-2
-      If(I.le.0.d0) I=2
+      If(I.le.0.d0) I=1
       If(I.gt.(nz-3))I=nz-3
       zz(1)=ZA(I)
       zz(2)=ZA(I+1)
@@ -273,7 +255,7 @@ c 1    CONTINUE
 
 **************************************************************************
 
-        FUNCTION RINTERP2D (X,Y,F,X0,Y0,NX,NY)
+        FUNCTION RINTERP2D(X,Y,F,X0,Y0,NX,NY)
 
         IMPLICIT NONE
         INTEGER NX,NY
@@ -365,4 +347,53 @@ C  suggested by Z. Sullivan.
          Y=YA(1)+C1+CC1+DC1
       ENDIF
       RETURN
+      END
+
+
+      SUBROUTINE ratint(xa,ya,n,x,y,dy)
+      INTEGER n,NMAX
+      REAL*8 dy,x,y,xa(n),ya(n),TINY
+      PARAMETER (NMAX=4,TINY=1.e-25)
+      INTEGER i,m,ns
+      REAL*8 dd,h,hh,t,w,c(NMAX),d(NMAX) 
+      ns=1
+      hh=abs(x-xa(1))
+      do i=1,n 
+         h=abs(x-xa(i)) 
+         if (h.eq.0.)then
+            y=ya(i)
+            dy=0.0
+            return
+         else if (h.lt.hh) then 
+            ns=i
+            hh=h 
+         endif
+         c(i)=ya(i)
+         d(i)=ya(i)+TINY 
+      enddo
+      y=ya(ns) 
+      ns=ns-1
+      do m=1,n-1
+         do i=1,n-m
+            w=c(i+1)-d(i)
+            h=xa(i+m)-x 
+            t=(xa(i)-x)*d(i)/h
+            dd=t-c(i+1)
+            if(dd.eq.0.)then
+               print *,'failure in ratint'
+               stop
+            endif
+            dd=w/dd
+            d(i)=c(i+1)*dd
+            c(i)=t*dd 
+         enddo
+         if (2*ns.lt.n-m)then 
+            dy=c(ns+1)
+         else 
+            dy=d(ns)
+            ns=ns-1
+         endif
+         y=y+dy 
+      enddo
+      return 
       END
