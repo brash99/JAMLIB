@@ -1,25 +1,26 @@
 
-      PROGRAM JAM16FF
-      IMPLICIT NONE
-      INTEGER ipos,iz
-      CHARACTER(len=20)::flav,hadron
-      REAL*8 z,Q2,dp,get_zF,TEST
+c      PROGRAM JAM16FF
+c      IMPLICIT NONE
+      
+c      INTEGER ipos,iz
+c      CHARACTER(len=20)::flav,hadron
+c      REAL*8 z,Q2,dp,get_zF,TEST
 
-      ipos=0
-      flav='dp'
-      hadron='pion'
-      !z=0.5D0
-      Q2=1.D0
+c      ipos=0
+c      flav='dp'
+c      hadron='pion'
+c      !z=0.5D0
+c      Q2=1.D0
 
-      CALL GRID_INIT(hadron,ipos)
+c      CALL GRID_INIT(hadron,ipos)
 
-      DO iz=5,100
-         z = FLOAT(iz)/100.D0
-         dp = get_zF(flav,z,Q2)
-         print *,z,Q2,dp
-      ENDDO
+c      DO iz=5,100
+c         z = FLOAT(iz)/100.D0
+c         dp = get_zF(flav,z,Q2)
+c         print *,z,Q2,dp
+c      ENDDO
 
-      END PROGRAM
+c      END PROGRAM
 
 
 ***************************************************************************
@@ -28,73 +29,78 @@
 *     
 *     Returns z*D_q+(z,Q2) where q+ = q + qbar
 *
-*     ipos (integer): posterior number (0 - 200)
 *     flav (string): 'up','dp','sp','cp','bp','gl'
-*     hadron (string): 'pion','kaon'
 *  
+*     GRID_INIT must be called only once before using FUNCTION get_zF!
+*
+*     SUBROUTINE GRID_INIT requires two inputs:
+*
+*       - ipos (integer): posterior number (0 - 200)
+*         ipos=0 is central value
+*         ipos=1-200 are replicas from MC analysis
+*
+*       - hadron (string): 'pion','kaon'
 *
 ***************************************************************************
 
-      FUNCTION get_zF(flav,z,Q2)
+      FUNCTION get_zF(flav,z,Q)
       IMPLICIT NONE
       INTEGER nq2,nz,ipos,INIT
       PARAMETER (nq2=30,nz=100)
       INTEGER i,iz,iq2,J,J1,J2
-      REAL*8 ZA(nz),Q2A(nq2),up(nq2,nz),dp(nq2,nz),sp(nq2,nz),cp(nq2,nz)
-      REAL*8 bp(nq2,nz),gl(nq2,nz)
-      REAL*8 z,Q2,zF,error,RINTERP2D,A1,A2,S1,S2,logQ2,ANS,get_zF,get_fz
-      REAL*8 s,SA,lam,Qini
+      REAL*8 ZA(nz),QA(nq2),up(nz,nq2),dp(nz,nq2),sp(nz,nq2),cp(nz,nq2)
+      REAL*8 bp(nz,nq2),gl(nz,nq2)
+      REAL*8 z,Q2,zF,error,RINTERP2D,A1,A2,S1,S2,logQ,ANS,get_zF,get_fz
+      REAL*8 s,SA,lam,Qini,Q
       CHARACTER(len=20)::flav
       COMMON/FF_INIT/INIT
       COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
-      COMMON/Z_Q2_GRIDS/ZA,Q2A
+      COMMON/Z_Q2_GRIDS/ZA,QA
 
       IF (INIT.eq.0) then
          print *,'Grid was not initialized! Must call GRID_INIT first.'
          stop
       ENDIF
 
-!      DO iz=1,nz
-!         print *,Q2A(2),ZA(iz),dp(2,iz)
-!      ENDDO
-
       Qini=1.D0
+      !q = DSQRT(Q2)
       lam=0.2268D0
-      s = DLOG(DLOG(Q2/lam)/DLOG(Qini/lam))
+      s = DLOG(DLOG(q/lam)/DLOG(Qini/lam))
 
       DO 2 J=1,nq2
-      SA=DLOG(DLOG(Q2A(J)/lam)/DLOG(Qini/lam))
+      SA=DLOG(DLOG(QA(J)/lam)/DLOG(Qini/lam))
+      !SA=DSQRT(Q2A(J))
       if(s.lt.SA)then
          J2=J
-         if(J2.eq.1)then
-            J2=2
-         endif
+         if(J2.eq.1)J2=2
          J1=J2-1
-         S2=DLOG(DLOG(Q2A(J2)/lam)/DLOG(Qini/lam))
-         S1=DLOG(DLOG(Q2A(J1)/lam)/DLOG(Qini/lam))
+         S2=DLOG(DLOG(QA(J2)/lam)/DLOG(Qini/lam))
+         S1=DLOG(DLOG(QA(J1)/lam)/DLOG(Qini/lam))
+         !S2=DSQRT(Q2A(J2))
+         !S1=DSQRT(Q2A(J1))
          GOTO 1
       endif
  2    CONTINUE
  1    CONTINUE
 
-      !DO 2 J=1,nq2
-      !logQ2=DLOG(Q2)
-      !if(logQ2.lt.SA)then
-         !J2=J
-         !if(J2.eq.1)then
-            !J2=2
-         !endif
-         !J1=J2-1
+c      logQ = DLOG(Q)
+c      DO 2 J=1,nq2
+c      if(logQ.lt.DLOG(Q2A(J)))then
+c         J2=J
+c         if(J2.eq.1)J2=2
+c         J1=J2-1
+c         S2=DLOG(Q2A(J2))
+c         S1=DLOG(Q2A(J1))
          !S2=DLOG(DLOG(Q2A(J2)/lam)/DLOG(Qini/lam))
          !S1=DLOG(DLOG(Q2A(J1)/lam)/DLOG(Qini/lam))
-         !GOTO 1
-      !endif
-! 2    CONTINUE
-! 1    CONTINUE
+c         GOTO 1
+c      endif
+c 2    CONTINUE
+c 1    CONTINUE
 
       A1=get_fz(flav,z,J1)
       A2=get_fz(flav,z,J2)
-      ANS=A1*(logQ2-S2)/(S1-S2)+A2*(logQ2-S1)/(S2-S1)
+      ANS=A1*(s-S2)/(S1-S2)+A2*(s-S1)/(S2-S1)
       !if(ans.lt.0.d0)ans=0.d0
       zF=ANS
       RETURN
@@ -106,12 +112,12 @@
       IMPLICIT NONE
       INTEGER nz,nq2,J,In1,I
       PARAMETER (nz = 100, nq2 = 30)
-      REAL*8 zz(4),fz(4),up(nq2,nz),dp(nq2,nz),cp(nq2,nz),sp(nq2,nz)
-      REAL*8 bp(nq2,nz),gl(nq2,nz),ZA(nz),Q2A(nq2),DQP(nq2,nz)
+      REAL*8 zz(4),fz(4),up(nz,nq2),dp(nz,nq2),cp(nz,nq2),sp(nz,nq2)
+      REAL*8 bp(nz,nq2),gl(nz,nq2),ZA(nz),QA(nq2),DQP(nz,nq2)
       REAL*8 get_fz,z,ans
       CHARACTER(len=20)::flav
       COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
-      COMMON/Z_Q2_GRIDS/ZA,Q2A
+      COMMON/Z_Q2_GRIDS/ZA,QA
       
 
       IF (flav.eq.'up')then
@@ -138,10 +144,10 @@
       zz(2)=ZA(I+1)
       zz(3)=ZA(I+2)
       zz(4)=ZA(I+3)
-      fz(1)=DQP(J,I)
-      fz(2)=DQP(J,I+1)
-      fz(3)=DQP(J,I+2)
-      fz(4)=DQP(J,I+3)
+      fz(1)=DQP(I,J)
+      fz(2)=DQP(I+1,J)
+      fz(3)=DQP(I+2,J)
+      fz(4)=DQP(I+3,J)
       call POLINT4(zz,fz,z,ans)
       get_fz=ans
 
@@ -158,11 +164,11 @@
       PARAMETER (nq2=30,nz=100)
       INTEGER i,iz,iq2
       CHARACTER(len=20)::hadron,filename,folder
-      REAL*8 ZA(nz),Q2A(nq2),up(nq2,nz),dp(nq2,nz),sp(nq2,nz),cp(nq2,nz)
-      REAL*8 bp(nq2,nz),gl(nq2,nz)
+      REAL*8 ZA(nz),QA(nq2),up(nz,nq2),dp(nz,nq2),sp(nz,nq2),cp(nz,nq2)
+      REAL*8 bp(nz,nq2),gl(nz,nq2)
       COMMON/FF_INIT/INIT
       COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
-      COMMON/Z_Q2_GRIDS/ZA,Q2A
+      COMMON/Z_Q2_GRIDS/ZA,QA
 
 
       if (hadron.eq.'pion') then
@@ -185,12 +191,12 @@
          READ(10,*)
       ENDDO
       READ(10,*) ZA
-      READ(10,*) Q2A
+      READ(10,*) QA
       READ(10,*) 
-      DO iq2=1,nq2
-         DO iz=1,nz
-            READ(10,*) dp(iq2,iz),up(iq2,iz),sp(iq2,iz),cp(iq2,iz),
-     &                 bp(iq2,iz),gl(iq2,iz)
+      DO iz=1,nz
+         DO iq2=1,nq2
+            READ(10,*) dp(iz,iq2),up(iz,iq2),sp(iz,iq2),cp(iz,iq2),
+     &                 bp(iz,iq2),gl(iz,iq2)
          ENDDO
       ENDDO
       CLOSE(10)
