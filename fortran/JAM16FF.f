@@ -1,26 +1,28 @@
 
-      PROGRAM JAM16FF
-      IMPLICIT NONE
+c      PROGRAM JAM16FF
+c      IMPLICIT NONE
       
-      INTEGER ipos,iz
-      CHARACTER(len=20)::flav,hadron
-      REAL*8 z,Q2,dp,get_zF,TEST
+c      INTEGER ipos,iz
+c      CHARACTER(len=20)::flav,hadron
+c      REAL*8 z,Q2,dp,get_zF,TEST,up
 
-      ipos=0
-      flav='dp'
-      hadron='pion'
-      !z=0.5D0
-      Q2=1.D0
+c      ipos=0
+c      flav='up'
+c      hadron='pion'
+c      z=0.05D0
+c      Q2=1.D0
 
-      CALL GRID_INIT(hadron,ipos)
+c      CALL GRID_INIT(hadron,ipos)
 
-      DO iz=5,100
-         z = FLOAT(iz)/100.D0
-         dp = get_zF(flav,z,Q2)
-         print *,z,Q2,dp
-      ENDDO
+c      up = get_zF(flav,z,Q2)
 
-      END PROGRAM
+c      DO iz=5,100
+c         z = FLOAT(iz)/100.D0
+c         dp = get_zF(flav,z,Q2)
+c         print *,z,Q2,dp
+c      ENDDO
+
+c      END PROGRAM
 
 
 ***************************************************************************
@@ -45,46 +47,55 @@
 
       FUNCTION get_zF(flav,z,Q2)
       IMPLICIT NONE
-      INTEGER nq2,nz,ipos,INIT
-      PARAMETER (nq2=30,nz=100)
+      INTEGER nq2,nz,ipos,INIT,ier,iwrk(2),lwrk,kwrk
+      PARAMETER (nq2=30,nz=100,lwrk=8,kwrk=2)
       INTEGER i,iz,iq2,J,J1,J2
       REAL*8 ZA(nz),QA(nq2),up(nz,nq2),dp(nz,nq2),sp(nz,nq2),cp(nz,nq2)
-      REAL*8 bp(nz,nq2),gl(nz,nq2)
-      REAL*8 z,Q2,zF,error,RINTERP2D,A1,A2,S1,S2,logQ,ANS,get_zF,get_fz
-      REAL*8 S,SA,lam,Qini,Q,DQP(nz,nq2),Q2A(nq2)
+      REAL*8 bp(nz,nq2),gl(nz,nq2),zarr(1),qarr(1),zF(1,1)
+      REAL*8 z,Q2,error,RINTERP2D,A1,A2,S1,S2,logQ,ANS,get_zF,get_fz
+      REAL*8 S,SA,lam,Qini,Q,DQP(nz,nq2),Q2A(nq2),CUP(3000),TZ(104)
+      REAL*8 TQ2(34),wrk(lwrk)
       CHARACTER(len=20)::flav
       COMMON/FF_INIT/INIT
-      COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
-      COMMON/Z_Q2_GRIDS/ZA,QA
+      COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl,CUP
+      COMMON/Z_Q2_GRIDS/ZA,QA,TZ,TQ2
 
       IF (INIT.eq.0) then
          print *,'Grid was not initialized! Must call GRID_INIT first.'
          stop
       ENDIF
 
-      Qini=1.D0
-      q = DSQRT(Q2)
-      lam=0.2268D0
-      S = DLOG(DLOG(q/lam)/DLOG(Qini/lam))
+c      Qini=1.D0
+c      q = DSQRT(Q2)
+c      lam=0.2268D0
+c      S = DLOG(DLOG(q/lam)/DLOG(Qini/lam))
 
-      DO 2 J=1,nq2
-      SA=DLOG(DLOG(QA(J)/lam)/DLOG(Qini/lam))
-      IF(S.LT.SA)THEN
-         J2=J
-         IF(J2.EQ.1)J2=2
-         J1=J2-1
-         S2=DLOG(DLOG(QA(J2)/lam)/DLOG(Qini/lam))
-         S1=DLOG(DLOG(QA(J1)/lam)/DLOG(Qini/lam))
-         GOTO 1
-      ENDIF
- 2    CONTINUE
- 1    CONTINUE
+c      DO 2 J=1,nq2
+c      SA=DLOG(DLOG(QA(J)/lam)/DLOG(Qini/lam))
+c      IF(S.LT.SA)THEN
+c         J2=J
+c         IF(J2.EQ.1)J2=2
+c         J1=J2-1
+c         S2=DLOG(DLOG(QA(J2)/lam)/DLOG(Qini/lam))
+c         S1=DLOG(DLOG(QA(J1)/lam)/DLOG(Qini/lam))
+c         GOTO 1
+c      ENDIF
+c 2    CONTINUE
+c 1    CONTINUE
 
-      A1=get_fz(flav,z,J1)
-      A2=get_fz(flav,z,J2)
-      ANS=A1*(S-S2)/(S1-S2)+A2*(S-S1)/(S2-S1)
+c      A1=get_fz(flav,z,J1)
+c      A2=get_fz(flav,z,J2)
+c      ANS=A1*(S-S2)/(S1-S2)+A2*(S-S1)/(S2-S1)
 
-      get_zF=ANS
+      zarr(1)=z
+      qarr(1)=Q2
+
+      CALL bispev(TZ,104,TQ2,34,CUP,3,3,zarr,1,qarr,1,zF,wrk,lwrk,
+     &            iwrk,kwrk,ier)
+
+c      print *, TZ,TQ2!zarr(1),qarr(1),zF(1,1),ier
+
+      get_zF=zF(1,1)
       RETURN
       END
 
@@ -98,8 +109,8 @@
       REAL*8 bp(nz,nq2),gl(nz,nq2),ZA(nz),QA(nq2),DQP(nz,nq2)
       REAL*8 get_fz,z,ans,error
       CHARACTER(len=20)::flav
-      COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
-      COMMON/Z_Q2_GRIDS/ZA,QA
+c      COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
+c      COMMON/Z_Q2_GRIDS/ZA,QA
       
 
       IF (flav.eq.'up')then
@@ -147,10 +158,10 @@
       INTEGER i,iz,iq2
       CHARACTER(len=20)::hadron,filename,folder
       REAL*8 ZA(nz),QA(nq2),up(nz,nq2),dp(nz,nq2),sp(nz,nq2),cp(nz,nq2)
-      REAL*8 bp(nz,nq2),gl(nz,nq2)
+      REAL*8 bp(nz,nq2),gl(nz,nq2),CUP(3000),TZ(104),TQ2(34)
       COMMON/FF_INIT/INIT
-      COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl
-      COMMON/Z_Q2_GRIDS/ZA,QA
+      COMMON/FF_GRIDS/up,dp,sp,cp,bp,gl,CUP
+      COMMON/Z_Q2_GRIDS/ZA,QA,TZ,TQ2
 
 
       if (hadron.eq.'pion') then
@@ -169,18 +180,17 @@
          WRITE(filename,'(A3,I3)') 'xF-',ipos
       endif
 
-      print *,filename
-
       OPEN(10,FILE=trim(folder)//'/'//trim(filename)//'.tab',
      &                                            STATUS='old')
-      READ(10,*) ZA
-      READ(10,*) QA
-      DO iz=1,nz
-         DO iq2=1,nq2
-            READ(10,*) dp(iz,iq2),up(iz,iq2),sp(iz,iq2),cp(iz,iq2),
-     &                 bp(iz,iq2),gl(iz,iq2)
-         ENDDO
-      ENDDO
+      READ(10,*) TZ
+      READ(10,*) TQ2
+      READ(10,*) CUP
+!      DO iz=1,nz
+!         DO iq2=1,nq2
+!            READ(10,*) dp(iz,iq2),up(iz,iq2),sp(iz,iq2),cp(iz,iq2),
+!     &                 bp(iz,iq2),gl(iz,iq2)
+!         ENDDO
+!      ENDDO
       CLOSE(10)
       INIT = 1
       RETURN
@@ -397,3 +407,129 @@ C  suggested by Z. Sullivan.
       enddo
       return 
       END
+
+***********************************************************************
+      subroutine bispev(tx,nx,ty,ny,c,kx,ky,x,mx,y,my,z,wrk,lwrk,
+     * iwrk,kwrk,ier)
+      integer nx,ny,kx,ky,mx,my,lwrk,kwrk,ier
+      integer iwrk(kwrk)
+      real*8 tx(nx),ty(ny),c((nx-kx-1)*(ny-ky-1)),x(mx),y(my),z(mx*my),
+     * wrk(lwrk)
+      integer i,iw,lwest
+      ier = 10
+      lwest = (kx+1)*mx+(ky+1)*my
+      if(lwrk.lt.lwest) go to 100
+      if(kwrk.lt.(mx+my)) go to 100
+      if(mx-1) 100,30,10
+ 10     do 20 i=2,mx
+        if(x(i).lt.x(i-1)) go to 100
+ 20       continue
+ 30         if(my-1) 100,60,40
+ 40           do 50 i=2,my
+        if(y(i).lt.y(i-1)) go to 100
+ 50       continue
+ 60         ier = 0
+      iw = mx*(kx+1)+1
+      call fpbisp(tx,nx,ty,ny,c,kx,ky,x,mx,y,my,z,wrk(1),wrk(iw),
+     * iwrk(1),iwrk(mx+1))
+ 100    return
+      end
+*************************************************************************
+
+      subroutine fpbisp(tx,nx,ty,ny,c,kx,ky,x,mx,y,my,z,wx,wy,lx,ly)
+      integer nx,ny,kx,ky,mx,my
+      integer lx(mx),ly(my)
+      real*8 tx(nx),ty(ny),c((nx-kx-1)*(ny-ky-1)),x(mx),y(my),z(mx*my),
+     * wx(mx,kx+1),wy(my,ky+1)
+      integer kx1,ky1,l,l1,l2,m,nkx1,nky1
+      real*8 arg,sp,tb,te
+      real*8 h(6)
+      kx1 = kx+1
+      nkx1 = nx-kx1
+      tb = tx(kx1)
+      te = tx(nkx1+1)
+      l = kx1
+      l1 = l+1
+      do 40 i=1,mx
+        arg = x(i)
+        if(arg.lt.tb) arg = tb
+        if(arg.gt.te) arg = te
+ 10         if(arg.lt.tx(l1) .or. l.eq.nkx1) go to 20
+        l = l1
+        l1 = l+1
+        go to 10
+ 20         call fpbspl(tx,nx,kx,arg,l,h)
+        lx(i) = l-kx1
+        do 30 j=1,kx1
+          wx(i,j) = h(j)
+ 30           continue
+ 40             continue
+      ky1 = ky+1
+      nky1 = ny-ky1
+      tb = ty(ky1)
+      te = ty(nky1+1)
+      l = ky1
+      l1 = l+1
+      do 80 i=1,my
+        arg = y(i)
+        if(arg.lt.tb) arg = tb
+        if(arg.gt.te) arg = te
+ 50         if(arg.lt.ty(l1) .or. l.eq.nky1) go to 60
+        l = l1
+        l1 = l+1
+        go to 50
+ 60         call fpbspl(ty,ny,ky,arg,l,h)
+        ly(i) = l-ky1
+        do 70 j=1,ky1
+          wy(i,j) = h(j)
+ 70           continue
+ 80             continue
+      m = 0
+      do 130 i=1,mx
+        l = lx(i)*nky1
+        do 90 i1=1,kx1
+          h(i1) = wx(i,i1)
+ 90           continue
+        do 120 j=1,my
+          l1 = l+ly(j)
+          sp = 0.
+          do 110 i1=1,kx1
+            l2 = l1
+            do 100 j1=1,ky1
+              l2 = l2+1
+              sp = sp+c(l2)*h(i1)*wy(j,j1)
+ 100                  continue
+            l1 = l1+nky1
+ 110              continue
+          m = m+1
+          z(m) = sp
+ 120          continue
+ 130            continue
+      return
+      end
+
+***********************************************************
+
+      subroutine fpbspl(t,n,k,x,l,h)
+      real*8 x
+      integer n,k,l
+      real*8 t(n),h(6)
+      real*8 f,one
+      integer i,j,li,lj
+      real*8 hh(5)
+      one = 0.1e+01
+      h(1) = one
+      do 20 j=1,k
+        do 10 i=1,j
+          hh(i) = h(i)
+ 10           continue
+        h(1) = 0.
+        do 20 i=1,j
+          li = l+i
+          lj = li-j
+          f = hh(i)/(t(li)-t(lj))
+          h(i) = h(i)+f*(t(li)-x)
+          h(i+1) = f*(x-t(lj))
+ 20         continue
+      return
+      end
