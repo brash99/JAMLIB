@@ -94,6 +94,7 @@ class JAMLIB(object):
     self.npos=len(F)
     bar=BAR('loading tables',len(F))
     for f in F:
+      print '%s/%s'%(path,f)
       tab=load('%s/%s'%(path,f)) 
       X=tab['X']
       Q2=tab['Q2']
