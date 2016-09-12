@@ -1,26 +1,26 @@
 
-c      PROGRAM JAM16FF
-c      IMPLICIT NONE
+      PROGRAM JAM16FF
+      IMPLICIT NONE
       
-c      INTEGER ipos,iz
-c      CHARACTER(len=20)::flav,hadron
-c      REAL*8 z,Q2,dp,get_zF,TEST
+      INTEGER ipos,iz
+      CHARACTER(len=20)::flav,hadron
+      REAL*8 z,Q2,dp,get_zF,TEST
 
-c      ipos=200
-c      flav='dp'
-c      hadron='pion'
-c      !z=0.5D0
-c      Q2=1.D0
+      ipos=0
+      flav='dp'
+      hadron='pion'
+      !z=0.5D0
+      Q2=1.D0
 
-c      CALL GRID_INIT(hadron,ipos)
+      CALL GRID_INIT(hadron,ipos)
 
-c      DO iz=5,100
-c         z = FLOAT(iz)/100.D0
-c         dp = get_zF(flav,z,Q2)
-!         print *,z,Q2,dp
-c      ENDDO
+      DO iz=5,100
+         z = FLOAT(iz)/100.D0
+         dp = get_zF(flav,z,Q2)
+         print *,z,Q2,dp
+      ENDDO
 
-c      END PROGRAM
+      END PROGRAM
 
 
 ***************************************************************************
@@ -154,29 +154,27 @@ c      END PROGRAM
 
 
       if (hadron.eq.'pion') then
-         folder='JAM16FF_pi'
+!         folder='JAM16FF_pi'
+         folder='FFpion'
       elseif (hadron.eq.'kaon') then
-         folder='JAM16FF_K'
+!         folder='JAM16FF_K'
+         folder='FFkaon'
       endif
 
       if (ipos < 10) then
-         WRITE(filename,'(A14,I1)') trim(folder)//'_000',ipos
+         WRITE(filename,'(A3,I1)') 'xF-',ipos
       elseif (ipos>10.and.ipos<100) then
-         WRITE(filename,'(A13,I2)') trim(folder)//'_00',ipos
+         WRITE(filename,'(A3,I2)') 'xF-',ipos
       elseif (ipos>100) then
-         WRITE(filename,'(A12,I3)') trim(folder)//'_0',ipos
+         WRITE(filename,'(A3,I3)') 'xF-',ipos
       endif
 
       print *,filename
 
-      OPEN(10,FILE=trim(folder)//'/'//trim(filename)//'.dat',
+      OPEN(10,FILE=trim(folder)//'/'//trim(filename)//'.tab',
      &                                            STATUS='old')
-      DO i=1,3,1
-         READ(10,*)
-      ENDDO
       READ(10,*) ZA
       READ(10,*) QA
-      READ(10,*) 
       DO iz=1,nz
          DO iq2=1,nq2
             READ(10,*) dp(iz,iq2),up(iz,iq2),sp(iz,iq2),cp(iz,iq2),
