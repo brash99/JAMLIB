@@ -101,6 +101,11 @@ class JAMLIB(object):
       self.Q2=Q2
       spl={}
       for k in tab:
+        for kk in tab[k]:
+          print tab[k][kk][:2,:2]
+          sys.exit()
+
+
         if k=='X' or k=='Q2': continue
         spl[k]={}
         for kk in tab[k]:
