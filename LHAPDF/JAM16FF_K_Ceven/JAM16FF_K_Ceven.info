@@ -1,5 +1,5 @@
-SetDesc: 'JAMFF16 fragmentation functions into K+ mesons (identical to K- by charge conjugation). Returns x*FF(x). Flavors 1-5: q+ == q+qbar with q=d,u,s,c,b; Flavor 21: gluon. mem=0 => average of posteriors; mem=1-200 => FF posteriors.'
-SetIndex: 16003
+SetDesc: 'JAMFF16 fragmentation functions of gluons and charge-conjugation-even quarks into K+ mesons (identical to K- by charge conjugation). Returns x*FF(x). Flavors 1-5: q+ == q+qbar with q=d,u,s,c,b; Flavor 21: gluon. mem=0 => average of posteriors; mem=1-200 => FF posteriors.'
+SetIndex: 16004
 Authors: '[JAM collaboration] Sato N, Ethier J J, Melnitchouk W, Hirai M, Kumano S, Accardi A'
 Reference: 'arXiv:1609.00899 - e-mail accardi@jlab.org / sato@jlab.org'
 Format: lhagrid1
@@ -7,7 +7,7 @@ DataVersion: -1
 Particle: 321
 Flavors: [1, 2, 3, 4, 5, 21]
 OrderQCD: 1
-ForcePositive: 1
+ForcePositive: 0
 FlavorScheme: variable
 NumFlavors: 5
 NumMembers: 201
