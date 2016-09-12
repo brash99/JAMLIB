@@ -3,14 +3,29 @@ import sys,os
 import numpy as np
 import pylab as py
 from corelib import JAMLIB
+from tools import save,load
+
+
+x=1.0
+save(x,'test.dat')
+print load('test.dat')
+sys.exit()
+
+
+
+
+
 
 ###################################
 # pions
 ###################################
 FFpion=JAMLIB('JAM16/FFpion')
 
+
+
+
 # Quick test
-x=0.5
+x=0.05
 Q2=1.0
 print 'alphaS     = ',FFpion.get_alphaS(Q2)
 print 'num pos    = ',FFpion.npos
