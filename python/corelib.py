@@ -91,6 +91,8 @@ class JAMLIB(object):
     SPL=[]
     TAB=[]
     F=os.listdir(path)
+    iF=np.argsort([int(f.replace('xF-','').replace('.tab','')) for f in F])
+    F=[F[i] for i in iF]
     self.npos=len(F)
     bar=BAR('loading tables',len(F))
     for f in F:
@@ -101,7 +103,6 @@ class JAMLIB(object):
       self.Q2=Q2
       spl={}
       for k in tab:
-        for kk in tab[k]:
         if k=='X' or k=='Q2': continue
         spl[k]={}
         for kk in tab[k]:

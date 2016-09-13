@@ -8,9 +8,6 @@ from corelib import JAMLIB
 ###################################
 FFpion=JAMLIB('JAM16/FFpion')
 
-
-
-
 # Quick test
 x=0.05
 Q2=1.0
