@@ -27,11 +27,14 @@
       REAL*8 TZ(nz),TQ2(nq2),CUP(nc),CDP(nc),CSP(nc),CCP(nc)
       REAL*8 CBP(nc),CG(nc),CQP(nc)
       REAL*8 z,Q2,zarr(1),qarr(1),zF(1,1),get_zF
-      REAL*8 wrk(lwrk)
+      REAL*8 wrk(lwrk),mc2,mb2
       CHARACTER flav*2
       COMMON/FF_INIT/INIT
       COMMON/FF_COEFFS/CUP,CDP,CSP,CCP,CBP,CG
       COMMON/Z_Q2_KNOTS/TZ,TQ2
+
+      mc2=1.43**2
+      mb2=4.3**2
 
       IF (INIT.eq.0) then
          print *,'Grid was not initialized! Must call GRID_INIT first.'
@@ -58,7 +61,13 @@
       CALL bispev(TZ,nz,TQ2,nq2,CQP,3,3,zarr,1,qarr,1,zF,wrk,lwrk,
      &            iwrk,kwrk,ier)
 
-      get_zF=zF(1,1)
+      IF (Q2.LT.mc2.and.flav.eq.'cp') THEN
+         get_zF=0.D0
+      ELSEIF (Q2.LT.mb2.and.flav.eq.'bp') THEN
+         get_zF=0.D0
+      ELSE
+         get_zF=zF(1,1)
+      ENDIF
 
       RETURN
       END
@@ -110,6 +119,7 @@
 ************************************************************************
 *
 *     BIVARIATE SPLINE ROUTINE FROM FITPACK
+*     http://www.netlib.org/dierckx/
 *
 ************************************************************************
       subroutine bispev(tx,nx,ty,ny,c,kx,ky,x,mx,y,my,z,wrk,lwrk,
