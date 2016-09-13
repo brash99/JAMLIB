@@ -1,8 +1,12 @@
 ************************************************************************
 *
-*     JAM16 Fragmentation Functions
+*     JAM16 Pion and Kaon Fragmentation Functions
+*
+*     Authors: N. Sato, J.J. Ethier, W. Melnitchouk, M. Hirai,
+*              S. Kumano, A. Accardi
+*     arXiv:1609.00899
 *     
-*     Returns z*D_q+ where q+ = q + qbar
+*     Returns z*D_q+ and z*D_g where q+ = q + qbar
 *
 *     flav (character*2): 'up','dp','sp','cp','bp','gl'
 *  
@@ -10,9 +14,7 @@
 *
 *     SUBROUTINE GRID_INIT requires two inputs:
 *
-*       - ipos (integer): posterior number (0 - 199)
-*         ipos=0-199 are replicas from MC analysis
-*
+*       - ipos (integer): posterior number (0 to 199) from MC analysis
 *       - hadron (character*10): 'pion','kaon'
 *
 ************************************************************************
