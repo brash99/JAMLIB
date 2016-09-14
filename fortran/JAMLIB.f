@@ -127,6 +127,7 @@
      &                      CDB,CSB,CCB,CBB,CP,CN
       COMMON/X_Q2_KNOTS/TX,TQ2
 
+      !! Need to update for future JAM libraries
       IF (lib.eq.'JAM15'.and.dist.eq.'PPDF') THEN
          PLUS = .TRUE.
       ELSEIF (lib.eq.'JAM16'.and.dist(1:2).eq.'FF') THEN
@@ -148,6 +149,7 @@
 
       READ(10,*) TX
       READ(10,*) TQ2
+
       !! Need to update for future JAM libraries
       IF (dist.eq.'PPDF'.or.dist(1:2).eq.'FF') THEN
          IF (PLUS.eqv..TRUE.) THEN
@@ -174,7 +176,7 @@
       ELSEIF (dist.eq.'T4PPDF') THEN
          READ(10,*) CP
          READ(10,*) CN
-      endif
+      ENDIF
       CLOSE(10)
       INIT = 1
       RETURN
