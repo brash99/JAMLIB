@@ -4,13 +4,12 @@
 
 ## Details
 
-- The tables are located inside JAMXX
+- The tables are located inside JAM libraries (JAM15,JAM16,etc.)
 - The interpolation code is written inside JAMLIB.f
 - An example on how to use our functions is given in example.f
 - To run example:
-
-  $gfortran -o example example.f JAMLIB.f
-  $./example
+     $gfortran -o example example.f JAMLIB.f
+     $./example
 
  
 ## Authors
