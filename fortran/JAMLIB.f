@@ -24,7 +24,7 @@
 *     flav (character*2): 'up','dp','sp','cp','bp','gl','u','d','s'
 *                         'c','b','ub','db','sb','cb','bb','p','n'
 *
-*     Flavors 'qp' = q + qb (i.e. 'up' = u + ubar)
+*     Flavors 'qp' = q + qb (e.g. 'up' = u + ubar)
 *             'p'  = proton (for T4PPDF and structure functions)
 *             'n'  = neutron (for T4PPDF and structure functions)
 *
