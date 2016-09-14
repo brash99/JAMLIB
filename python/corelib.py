@@ -10,7 +10,7 @@ class JAMLIB(object):
     logo()
     self.setup_alphaS(order='NLO')
     self.load_tables(path)
-    self.dist=path.split('/')[-1]
+    self.dist=path.replace('\\','/').split('/')[-1]
 
   # alphaS
 
@@ -94,7 +94,9 @@ class JAMLIB(object):
     iF=np.argsort([int(f.replace('xF-','').replace('.tab','')) for f in F])
     F=[F[i] for i in iF]
     self.npos=len(F)
-    bar=BAR('loading tables',len(F))
+    str1 = path.replace('\\','/').split('/')[-2]
+    str2 = path.replace('\\','/').split('/')[-1]
+    bar=BAR('loading '+str1+'/'+str2+' tables',len(F))
     for f in F:
       tab=load('%s/%s'%(path,f)) 
       X=tab['X']
