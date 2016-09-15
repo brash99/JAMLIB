@@ -22,6 +22,11 @@ The JAMLIB can be downloaded in two ways
 
 To get the latest update, pull from your local repo, e.g. `$ git pull`.
 
+## Questions/bugs
+Please send us feedback or questions using the github 
+[issue tracker system](https://github.com/JeffersonLab/JAMLIB/issues)
+
+
 ## Authors
 * Nobuo Sato (Jefferson Lab)
 * Alberto Accardi (Hampton University and Jefferson Lab)
