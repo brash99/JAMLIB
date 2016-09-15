@@ -6,7 +6,7 @@ The repository contains interpolation tables for the collinear parton
 distributions in the nucleon, as well as the collinear parton to hadron
 fragmentation functions. The interpolation codes are available in:
 
-* [pure python](https://github.com/JeffersonLab/JAMLIB/tree/master/python)
+* [python](https://github.com/JeffersonLab/JAMLIB/tree/master/python)
 
 * [LHAPDF](https://github.com/JeffersonLab/JAMLIB/tree/master/LHAPDF)
 
