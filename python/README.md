@@ -17,9 +17,4 @@
   - jupyter: open the jupyter notebook example.ipynb )
 
  
-## Authors
-* Nobuo Sato (Jefferson Lab)
-* Alberto Accardi (Hampton University and Jefferson Lab)
-* Jacob Ethier (College of William and Mary)
-* Wally Melnitchouk (Jefferson Lab)
 
