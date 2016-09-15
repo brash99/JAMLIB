@@ -15,13 +15,13 @@ fragmentation functions. The interpolation codes are available in:
 The usage is described in the README files within each subfolder. 
 
 ## Available sets
-| Table         | Reference         | Notes                                      |
-| :--           | :--:              | :--                                        |
-| JAM15 PPDFs   | [inspires](jam15) | Only glue and q^+ = q+qbar at NLO          |
-| JAM15 T3PPDFs | [inspires](jam15) | Only u and d                               |
-| JAM15 T4PPDFs | [inspires](jam15) | This is twist 4 g1 for proton and neutrons |
-| JAM16 FFpions | [inspires](jam16) | Only glue and q^+ = q+qbar at NLO          |
-| JAM16 FFkaons | [inspires](jam16) | Only glue and q^+ = q+qbar at NLO          |
+| Table         | Reference         | Notes                                       |
+| :--           | :--:              | :--                                         |
+| JAM15 PPDFs   | [inspires](jam15) | Only glue and q^+ = q+qbar at NLO           |
+| JAM15 T3PPDFs | [inspires](jam15) | Only up and down type twist 3 distributions |
+| JAM15 T4PPDFs | [inspires](jam15) | This is twist 4 g1 for proton and neutrons  |
+| JAM16 FFpions | [inspires](jam16) | Only glue and q^+ = q+qbar at NLO           |
+| JAM16 FFkaons | [inspires](jam16) | Only glue and q^+ = q+qbar at NLO           |
 [jam15]:(https://inspirehep.net/record/1418180)
 [jam16]:(http://inspirehep.net/record/1485196?ln=en)
 
