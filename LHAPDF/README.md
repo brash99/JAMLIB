@@ -1,7 +1,9 @@
 ![jamlogo](../gallery/jam.jpg)
 
 # LHAPDF format PDFs and FFs 
- 
+
+Choose your grid and download the corresponding link in the first column (or click on "View raw" in the next page you get).
+
 **Note:** Grids with "preliminary" status or with version "v.-1" are in development and should not be downloaded.
 
 | Name                                         | Info                                            | Reference                                                      | status | Notes                                       |
