@@ -11,7 +11,7 @@ In this directory you will find two fortran scripts:
 
 ## Comments
 
-- The tables are located inside JAM libraries (JAM15,JAM16,etc.)
+- The tables are located inside the JAM libraries (JAM15,JAM16,etc.)
 - To run example:
   - $gfortran -o example example.f JAMLIB.f
   - $./example
