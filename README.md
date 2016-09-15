@@ -16,7 +16,7 @@ The usage is described in the README files within each subfolder.
 
 ## Available sets
 | Table         | Reference         | Notes                                      |
-| :--:          | :--:              | :--:                                       |
+| :--           | :--:              | :--                                        |
 | JAM15 PPDFs   | [inspires](jam15) | Only glue and q^+ = q+qbar at NLO          |
 | JAM15 T3PPDFs | [inspires](jam15) | Only u and d                               |
 | JAM15 T4PPDFs | [inspires](jam15) | This is twist 4 g1 for proton and neutrons |
