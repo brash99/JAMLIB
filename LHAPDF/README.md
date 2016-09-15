@@ -7,9 +7,11 @@
 ...... Don't download anything, yet! .........
 
 
-| Name              | Reference                                              | status  | Notes                                       |
-| :--:              | :--:                                                   | :--:    | :--:                                        |
-| JAM16FF_pi_Ceven  | [arXiv:](http://inspirehep.net/record/1485196?ln=en)   | :--:    | :--:                                        |
+| Name                                   | Info                                        | Reference                                                      | status | Notes                                       |
+| :--:                                   | :--:                                        | :--:                                                           | :--:   | :--:                                        |
+| [JAM16FF_pi_Ceven](zip/JAM16_pi_Ceven) | [.info](JAM16_pi_Ceven/JAM16_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196?ln=en) | v1     | Only glue and q^+ = q+qbar, see .info file  |
+| [JAM16FF_K_Ceven](zip/JAM16_K_Ceven)   | [.info](JAM16_K_Ceven/JAM16_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196?ln=en) | v1     | Only glue and q^+ = q+qbar, see .info file  |
+| :--:                                   | :--:                                        | :--:                                                           | :--:   | :--:                                        |
 
 
 ### Questions / bugs
