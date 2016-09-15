@@ -2,23 +2,25 @@
 
 ## About
  
-The repository contains a collection of codes/scripts (in fortran, python,
-mathematica), along with interpolation tables for the collinear parton
+The repository contains interpolation tables for the collinear parton
 distributions in the nucleon, as well as the collinear parton to hadron
-fragmentation functions. 
+fragmentation functions. The interpolation codes are available in:
 
-NOTE: Only python version is available. LHAPDF and fortran code will be available soon!
+* [pure python](https://github.com/JeffersonLab/JAMLIB/tree/master/python)
+
+* [LHAPDF](https://github.com/JeffersonLab/JAMLIB/tree/master/LHAPDF)
+
+* [fortran](https://github.com/JeffersonLab/JAMLIB/tree/master/fortran)
+
+The usage is described in the README files within each subfolder. 
 
 ## Quick start
-The codes can be downloaded in two ways
+The JAMLIB can be downloaded in two ways
 
 * [Download the latest release](https://github.com/JeffersonLab/JAMLIB/archive/master.zip).
 *  Clone the repo:  `$ git https://github.com/JeffersonLab/JAMLIB.git`.
 
 To get the latest update, pull from your local repo, e.g. `$ git pull`.
-
-## Documentation
-JAMLIB documentation is available in the [wiki](https://github.com/JeffersonLab/JAMLIB/wiki). 
 
 ## Authors
 * Nobuo Sato (Jefferson Lab)
