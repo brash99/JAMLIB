@@ -29,7 +29,7 @@ Please send us feedback or questions using the github
 [issue tracker system](https://github.com/JeffersonLab/JAMLIB/issues).
 
 
-### Acknowledgments
+## Acknowledgments
 
 Maintainer:
 * Alberto Accardi
