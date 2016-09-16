@@ -43,7 +43,7 @@ Please send us feedback or questions using the github
 
 ## Authors
 * Nobuo Sato (Jefferson Lab)
-* Alberto Accardi (Hampton University and Jefferson Lab)
+* Alberto Accardi (Hampton U. and Jefferson Lab)
 * Jacob Ethier (College of William and Mary)
 * Wally Melnitchouk (Jefferson Lab)
 
