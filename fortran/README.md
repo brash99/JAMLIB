@@ -20,12 +20,5 @@ In this directory you will find two fortran scripts:
 
 ## Questions/Comments
 
-- Please contact [Jacob Ethier](mailto:jethier@jlab.org) with
-any questions or comments regarding the fortran codes/tables
- 
-## Authors
-* Nobuo Sato (Jefferson Lab)
-* Alberto Accardi (Hampton University and Jefferson Lab)
-* Jacob Ethier (College of William and Mary)
-* Wally Melnitchouk (Jefferson Lab)
-
+Please send us feedback or questions using the github
+[issue tracker system](https://github.com/JeffersonLab/JAMLIB/issues).
