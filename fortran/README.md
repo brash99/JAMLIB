@@ -1,4 +1,4 @@
-![jamlogo](../gallery/jam.jpg)
+[![jamlogo](../gallery/jam.jpg)](http://www.jlab.org/jam)
 
 # Fortran Interface
 
