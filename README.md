@@ -1,4 +1,4 @@
-[![jamlogo](../gallery/jam.jpg)](http://www.jlab.org/jam)
+[![jamlogo](gallery/jam.jpg)](http://www.jlab.org/jam)
 
 ## About
  
