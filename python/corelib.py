@@ -131,6 +131,9 @@ class JAMLIB(object):
   def get_Q2grid(self):
     return self.Q2grid
 
+  def get_flavors(self):
+    return self.SPL[0][self.dist].keys()
+
 
 
 
