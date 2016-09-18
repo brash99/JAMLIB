@@ -136,11 +136,11 @@
          PLUS = .FALSE.
       ENDIF
 
-      if (ipos < 10) then
+      if (ipos.lt.10) then
          WRITE(filename,'(A3,I1)') 'xF-',ipos
-      elseif (ipos>10.and.ipos<100) then
+      elseif (ipos.ge.10.and.ipos.lt.100) then
          WRITE(filename,'(A3,I2)') 'xF-',ipos
-      elseif (ipos>100) then
+      elseif (ipos.ge.100) then
          WRITE(filename,'(A3,I3)') 'xF-',ipos
       endif
 

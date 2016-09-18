@@ -1,6 +1,6 @@
-![jamlogo](../gallery/jam.jpg)
+[![jamlogo](../gallery/jam.jpg)](http://www.jlab.org/jam)
 
-# python interface
+# Python Interface
 
 ## Dependecies:
 
@@ -14,7 +14,7 @@
 - We provide an example as:
 
   - python script:  execute it as $./example.py
-  - jupyter: open the jupyter notebook example.ipynb )
+  - jupyter: open the jupyter notebook example.ipynb
 
  
 
