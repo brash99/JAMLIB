@@ -11,7 +11,7 @@ Grids can be downlaoded in two ways:
 
 Either way, you need to (unzip and) copy the grids to your local LHAPDF grid folder. The default location can be found, e.g., in the output of the `$ lhapdf` command. Further info on the LHAPDF interface installation and usage can be found on the [LHAPDF project web page](https://lhapdf.hepforge.org/).
 
-A test ipython notebook is provided for convenience and to demonstrate usage of JAMLIB python code and LHAPDF grids. In the future, we'd like to add a python, C++, and fortran script, as well - help is welcome! - but for the moment you may have a look at the  [code examples](https://lhapdf.hepforge.org/codeexamples.html) in the LHAPDF project web page.
+A test ipython notebook is provided for convenience and to demonstrate usage of JAMLIB python code and LHAPDF grids. In the future python, C++ and fortran scripts will be added; for the moment you may have a look at the  [code examples](https://lhapdf.hepforge.org/codeexamples.html) in the LHAPDF project web page.
 
 ## Grids
 
@@ -19,13 +19,13 @@ A test ipython notebook is provided for convenience and to demonstrate usage of 
 
 | Name                                         | Info                                            | Reference                                                      | Status | Notes                                       |
 | :--:                                         | :--:                                            | :--:                                                           | :--:   | :--:                                        |
-| [JAM16FF_pi_Ceven](zip/JAM16FF_pi_Ceven.zip) | [.info](JAM16FF_pi_Ceven/JAM16FF_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196?ln=en) | v1     | Only glue and q^+ = q+qbar at NLO  |
-| [JAM16FF_K_Ceven](zip/JAM16FF_K_Ceven.zip)   | [.info](JAM16FF_K_Ceven/JAM16FF_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196?ln=en) | v1     | Only glue and q^+ = q+qbar at NLO  |
+| [JAM16FF_pi_Ceven](zip/JAM16FF_pi_Ceven.zip) | [.info](JAM16FF_pi_Ceven/JAM16FF_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v1     | q+ (=q+qbar) and glue at NLO       |
+| [JAM16FF_K_Ceven](zip/JAM16FF_K_Ceven.zip)   | [.info](JAM16FF_K_Ceven/JAM16FF_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v1     | q+ and glue at NLO                 |
 
 
 ## Questions/bugs
 
-Please send us feedback or questions using the github 
+Send feedback or questions using the github 
 [issue tracker system](https://github.com/JeffersonLab/JAMLIB/issues).
 
 
