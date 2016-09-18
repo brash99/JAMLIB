@@ -1,6 +1,6 @@
 [![jamlogo](../gallery/jam.jpg)](http://www.jlab.org/jam)
 
-# python interface
+# Python Interface
 
 ## Dependecies:
 
