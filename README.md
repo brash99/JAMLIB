@@ -17,11 +17,11 @@ The usage is described in the README files within each subfolder.
 ## Available sets
 | Table         | Reference         | Notes                                       |
 | :--           | :--:              | :--                                         |
-| JAM15 PPDF    | [inspires][jam15] | q^+ = q+qbar and glue at NLO                |
-| JAM15 T3PPDF  | [inspires][jam15] | u and d type twist-3 distributions          |
-| JAM15 T4g1    | [inspires][jam15] | twist-4 part of g1 for proton and neutron   |
-| JAM16 FFpion  | [inspires][jam16] | q^+ = q+qbar and glue at NLO                |
-| JAM16 FFkaon  | [inspires][jam16] | q^+ = q+qbar and glue at NLO                |
+| JAM15 PPDF    | [inspirehep][jam15] | q^+ = q+qbar and glue at NLO                |
+| JAM15 T3PPDF  | [inspirehep][jam15] | u and d type twist-3 distributions          |
+| JAM15 T4g1    | [inspirehep][jam15] | twist-4 part of g1 for proton and neutron   |
+| JAM16 FFpion  | [inspirehep][jam16] | q^+ = q+qbar and glue at NLO                |
+| JAM16 FFkaon  | [inspirehep][jam16] | q^+ = q+qbar and glue at NLO                |
 [jam15]:https://inspirehep.net/record/1418180
 [jam16]:http://inspirehep.net/record/1485196?ln=en
 
