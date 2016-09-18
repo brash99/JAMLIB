@@ -91,6 +91,7 @@ class JAMLIB(object):
     SPL=[]
     TAB=[]
     F=os.listdir(path)
+    F=[f for f in F if f.endswith('.tab')]
     iF=np.argsort([int(f.replace('xF-','').replace('.tab','')) for f in F])
     F=[F[i] for i in iF]
     self.npos=len(F)

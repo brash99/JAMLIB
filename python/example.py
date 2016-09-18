@@ -9,7 +9,7 @@ from corelib import JAMLIB
 ###################################
 #jamlib=JAMLIB('JAM15/PPDF')
 #jamlib=JAMLIB('JAM15/T3PPDF')
-#jamlib=JAMLIB('JAM15/T4PPDF')
+#jamlib=JAMLIB('JAM15/g1T4')
 jamlib=JAMLIB('JAM16/FFpion')
 #jamlib=JAMLIB('JAM16/FFkaon')
 
@@ -18,10 +18,11 @@ jamlib=JAMLIB('JAM16/FFpion')
 ###################################
 x=0.05
 Q2=1.0
-flav='sp'
+flav='up'
 print 'alphaS     = ',jamlib.get_alphaS(Q2)
 print 'num pos    = ',jamlib.npos
 print 'xF(ipos=0) = ',jamlib.get_XF(0,flav,x,Q2)
+
 
 ###################################
 # Plot xF
