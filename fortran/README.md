@@ -5,13 +5,13 @@
 In this directory you will find two fortran scripts:
 
    - JAMLIB.f: contains FUNCTION get_xF which returns
-     	       x times the PDF or FF distribution as well
+     	       x times the PDF or FF distribution, as well
 	       as the interpolation routine
    - example.f: contains an example on how to use JAMLIB.f
 
 ## Comments
 
-- The tables are located inside the JAM libraries (JAM15,JAM16,etc.)
+- The tables are located inside the JAM libraries (JAM15, JAM16, etc.)
 - To run example:
   - $gfortran -o example example.f JAMLIB.f
   - $./example
@@ -20,5 +20,5 @@ In this directory you will find two fortran scripts:
 
 ## Questions/Comments
 
-Please send us feedback or questions using the github
+Send feedback or questions using the github
 [issue tracker system](https://github.com/JeffersonLab/JAMLIB/issues).
