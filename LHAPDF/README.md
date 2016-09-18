@@ -19,8 +19,8 @@ A test ipython notebook is provided for convenience and to demonstrate usage of 
 
 | Name                                         | Info                                            | Reference                                                      | Status | Notes                                       |
 | :--:                                         | :--:                                            | :--:                                                           | :--:   | :--:                                        |
-| [JAM16FF_pi_Ceven](zip/JAM16FF_pi_Ceven.zip) | [.info](JAM16FF_pi_Ceven/JAM16FF_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v1     | q+ (=q+qbar) and glue at NLO       |
-| [JAM16FF_K_Ceven](zip/JAM16FF_K_Ceven.zip)   | [.info](JAM16FF_K_Ceven/JAM16FF_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v1     | q+ and glue at NLO                 |
+| [JAM16FF_pi_Ceven](zip/JAM16FF_pi_Ceven.zip) | [.info](JAM16FF_pi_Ceven/JAM16FF_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v1     | q+ (=q+qbar) & glue to pions at NLO     |
+| [JAM16FF_K_Ceven](zip/JAM16FF_K_Ceven.zip)   | [.info](JAM16FF_K_Ceven/JAM16FF_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v1     | q+ and glue to kaons at NLO             |
 
 
 ## Questions/bugs
