@@ -15,7 +15,7 @@ A test ipython notebook is provided for convenience and to demonstrate usage of 
 
 ## Grids
 
-**Note:** Grids with "preliminary" status or with version "v.-1" are in development and should not be used with caution.
+**Note:** Grids with "preliminary" status or with version "v.-1" are in development and should be used with caution.
 
 | Name                                         | Info                                            | Reference                                                      | Status | Notes                                       |
 | :--:                                         | :--:                                            | :--:                                                           | :--:   | :--:                                        |
