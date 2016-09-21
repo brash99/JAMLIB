@@ -21,8 +21,8 @@ A test ipython notebook is provided for convenience and to demonstrate usage of 
 | :--:                                         | :--:                                            | :--:                                                           | :--:   | :--:                                        |
 | [JAM15_PPDF_Ceven](zip/JAM15_PPDF_Ceven.zip) | [.info](GRIDS/JAM15_PPDF_Ceven/JAM15_PPDF_Ceven.info) | [Phys.Rev. D93 (2016) 074005](http://inspirehep.net/record/1418180?ln=en) | v.-1  PRELIMINARY   | q+ (=q+qbar) & glue polarized PDFs at NLO     |
 | [JAM15_T3PPDF_Ceven](zip/JAM15_PPDF_Ceven.zip) | [.info](GRIDS/JAM15_T3PPDF_Ceven/JAM15_T3PPDF_Ceven.info) | [Phys.Rev. D93 (2016) 074005](http://inspirehep.net/record/1418180?ln=en) | v.-1  PRELIMINARY   | q+ (=q+qbar) & glue polarized twist-3 PDFs  at NLO     |
-| [JAM16FF_pi_Ceven](zip/JAM16FF_pi_Ceven.zip) | [.info](GRIDS/JAM16FF_pi_Ceven/JAM16FF_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v.-1  PRELIMINARY   | q+ (=q+qbar) & glue to pions at NLO     |
-| [JAM16FF_K_Ceven](zip/JAM16FF_K_Ceven.zip)   | [.info](GRIDS/JAM16FF_K_Ceven/JAM16FF_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v.-1  PRELIMINARY   | q+ (=q+qbar) and glue to kaons at NLO             |
+| [JAM16FF_pi_Ceven](zip/JAM16_FF_pi_Ceven.zip) | [.info](GRIDS/JAM16_FF_pi_Ceven/JAM16_FF_pi_Ceven.info) | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v.-1  PRELIMINARY   | q+ (=q+qbar) & glue to pions at NLO     |
+| [JAM16FF_K_Ceven](zip/JAM16_FF_K_Ceven.zip)   | [.info](GRIDS/JAM16_FF_K_Ceven/JAM16_FF_K_Ceven.info)   | [arXiv:1609.00899](http://inspirehep.net/record/1485196) | v.-1  PRELIMINARY   | q+ (=q+qbar) and glue to kaons at NLO             |
 
 
 ## Questions/bugs
