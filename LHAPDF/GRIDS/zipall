@@ -1,0 +1,2 @@
+# bash
+for f in `ls`; do if [ $f != "zipall" ]; then zip -f ../zip/$f.zip $f/'*'; fi;done

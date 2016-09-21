@@ -1,4 +1,4 @@
-SetDesc: 'JAM15 polarized twist-3 PDFs of the proton. NLO global fit (DIS only data). Flavors 901-902: q^+ == q+qbar with q=d,u. mem=0 => average of posteriors; mem=1-200 => PPDF posteriors.'
+SetDesc: 'JAM15 polarized twist-3 PDFs of the proton. NLO fit (DIS only data). Flavors 901-902: q+ == q+qbar with q=d,u. mem=0 => average of posteriors; mem=1-200 => PPDF posteriors.'
 SetIndex: 16001
 Authors: '[JAM collaboration] Sato N, Melnitchouk W, Kuhn S E, Ethier J J, Accardi A'
 Reference: 'Phys.Rev. D93 (2016) 114017 - www.jlab.org/jam - github.com/JeffersonLab/JAMLIB/tree/master/LHAPDF'
