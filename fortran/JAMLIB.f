@@ -113,6 +113,9 @@
 ************************************************************************
 
       SUBROUTINE GRID_INIT(lib,dist,ipos)
+Cf2py intent(in) lib
+Cf2py intent(in) dist
+Cf2py intent(in) ipos
       IMPLICIT NONE
       INTEGER ipos,INIT
       INTEGER nq2,nx,nc
