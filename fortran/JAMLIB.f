@@ -43,7 +43,7 @@
       FUNCTION get_xF(x,Q2,flav)
       IMPLICIT NONE
       INTEGER nx,nq2,nc,ipos,INIT,ier,lwrk,kwrk
-      PARAMETER (nx=104,nq2=34,nc=3000,lwrk=8,kwrk=2)
+      PARAMETER (nx=104,nq2=67,nc=6300,lwrk=8,kwrk=2)
       INTEGER iwrk(kwrk)
       REAL*8 TX(nx),TQ2(nq2),CUP(nc),CDP(nc),CSP(nc),CCP(nc),CBP(nc)
       REAL*8 CG(nc),CU(nc),CD(nc),CS(nc),CC(nc),CB(nc),CUB(nc),CDB(nc)
@@ -112,15 +112,16 @@
 
 ************************************************************************
 
-      SUBROUTINE GRID_INIT(lib,dist,ipos)
+      SUBROUTINE GRID_INIT(path,lib,dist,ipos)
+Cf2py intent(in) path
 Cf2py intent(in) lib
 Cf2py intent(in) dist
 Cf2py intent(in) ipos
       IMPLICIT NONE
       INTEGER ipos,INIT
       INTEGER nq2,nx,nc
-      PARAMETER (nx=104,nq2=34,nc=3000)
-      CHARACTER*10 lib,dist,filename
+      PARAMETER (nx=104,nq2=67,nc=6300)
+      CHARACTER path*20,lib*10,dist*10,filename*10
       REAL*8 TX(nx),TQ2(nq2),CUP(nc),CDP(nc),CSP(nc),CCP(nc),CBP(nc)
       REAL*8 CG(nc),CU(nc),CD(nc),CS(nc),CC(nc),CB(nc),CUB(nc),CDB(nc)
       REAL*8 CSB(nc),CCB(nc),CBB(nc),CP(nc),CN(nc)
@@ -147,7 +148,7 @@ Cf2py intent(in) ipos
          WRITE(filename,'(A3,I3)') 'xF-',ipos
       endif
 
-      OPEN(10,FILE=trim(lib)//'/'//trim(dist)//'/'//
+      OPEN(10,FILE=trim(path)//trim(lib)//'/'//trim(dist)//'/'//
      &               trim(filename)//'.tab',STATUS='old')
 
       READ(10,*) TX
