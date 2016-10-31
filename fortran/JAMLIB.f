@@ -78,21 +78,21 @@
       ELSEIF (flav.eq.'d') THEN
          CQ = CD
       ELSEIF (flav.eq.'s') THEN
-         CQ = CU
+         CQ = CS
       ELSEIF (flav.eq.'c') THEN
-         CQ = CU
+         CQ = CC
       ELSEIF (flav.eq.'b') THEN
-         CQ = CU
+         CQ = CB
       ELSEIF (flav.eq.'ub') THEN
-         CQ = CU
+         CQ = CUB
       ELSEIF (flav.eq.'db') THEN
-         CQ = CU
+         CQ = CDB
       ELSEIF (flav.eq.'sb') THEN
-         CQ = CU
+         CQ = CSB
       ELSEIF (flav.eq.'cb') THEN
-         CQ = CU
+         CQ = CCB
       ELSEIF (flav.eq.'bb') THEN
-         CQ = CU
+         CQ = CBB
       ELSEIF (flav.eq.'p') THEN
          CQ = CP
       ELSEIF (flav.eq.'n') THEN
