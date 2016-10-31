@@ -25,8 +25,9 @@
 *                         'c','b','ub','db','sb','cb','bb','p','n'
 *
 *     Flavors 'qp' = q + qb (e.g. 'up' = u + ubar)
-*             'p'  = proton (for T4PPDF and structure functions)
-*             'n'  = neutron (for T4PPDF and structure functions)
+*             'p'  = proton (for g1T4 and structure functions)
+*             'n'  = neutron (for g1T4 and structure functions)
+*     Note: T3PPDF flavors are 'u' and 'd'
 *
 *     Returns x times the function (PPDF,FF,etc.)
 *
