@@ -10,8 +10,9 @@ from corelib import JAMLIB
 #jamlib=JAMLIB('JAM15/PPDF')
 #jamlib=JAMLIB('JAM15/T3PPDF')
 #jamlib=JAMLIB('JAM15/g1T4')
-jamlib=JAMLIB('JAM16/FFpion')
+#jamlib=JAMLIB('JAM16/FFpion')
 #jamlib=JAMLIB('JAM16/FFkaon')
+jamlib=JAMLIB('JAM17/PPDF')
 
 ###################################
 # Quick test
@@ -27,7 +28,7 @@ print 'xF(ipos=0) = ',jamlib.get_XF(0,flav,x,Q2)
 ###################################
 # Plot xF
 ###################################
-X=np.linspace(0.01,1)
+X=np.linspace(0.001,1)
 XF=[[jamlib.get_XF(i,flav,x,Q2) for x in X] for i in range(jamlib.npos)]
 XF0=np.mean(XF,axis=0)
 dXF=np.std(XF,axis=0)
@@ -41,8 +42,7 @@ ax.set_xlabel(r'$x$',size=50)
 ax.set_ylabel(r'$xF(x)$',size=50)
 ax.tick_params(axis='both', which='major', labelsize=20)
 py.tight_layout()
-py.savefig('xF.pdf')    
-
+py.savefig('xF.pdf')
 
 
 
